@@ -1,5 +1,6 @@
 var React = require('react')
-
+var MovieSelect = require('./MovieSelect')
+var MovieDetails = require('./MovieDetails')
 
 var MoviesBox = React.createClass({
 
@@ -28,6 +29,8 @@ var MoviesBox = React.createClass({
     return(
       <div>
       <h4>film</h4>
+      <MovieSelect movies={this.state.movies} setCurrentMovies={this.setCurrentMovies} />
+      <MovieDetails movies={this.state.CurrentMovie} />
       </div>
       )
   }

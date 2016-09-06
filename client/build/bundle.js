@@ -19755,6 +19755,8 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
+	var MovieSelect = __webpack_require__(160);
+	var MovieDetails = __webpack_require__(162);
 	
 	var MoviesBox = React.createClass({
 	  displayName: 'MoviesBox',
@@ -19789,13 +19791,63 @@
 	        'h4',
 	        null,
 	        'film'
-	      )
+	      ),
+	      React.createElement(MovieSelect, { movies: this.state.movies, setCurrentMovies: this.setCurrentMovies }),
+	      React.createElement(MovieDetails, { movies: this.state.CurrentMovie })
 	    );
 	  }
 	
 	});
 	
 	module.exports = MoviesBox;
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var MovieSelect = React.createClass({
+	  displayName: 'MovieSelect',
+	
+	
+	  getInitialState: function getInitialState() {
+	    return { selectedIndex: null };
+	  },
+	
+	  handleChange: function handleChange(element) {
+	    var newIndex = element.target.value;
+	    this.setState({ selectedIndex: newIndex });
+	    this.props.setCurrentMovie(this.props.movies[newIndex]);
+	  },
+	
+	  render: function render() {
+	    var movies = this.props.movies.map(function (movie, index) {
+	      return React.createElement(
+	        'option',
+	        { value: index, key: index },
+	        movie.show_title
+	      );
+	    }.bind(this));
+	    return React.createElement(
+	      'select',
+	      { value: this.state.selectedIndex, onChange: this.handleChange },
+	      movies
+	    );
+	  }
+	
+	});
+	
+	module.exports = MovieSelect;
+
+/***/ },
+/* 161 */,
+/* 162 */
+/***/ function(module, exports) {
+
+	"use strict";
 
 /***/ }
 /******/ ]);
