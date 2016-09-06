@@ -1,0 +1,4 @@
+- Movies Box        ---State: Movies / current movie
+  - Actor Select    --- Props: Actors (hard coded selection)
+  - Movie Select    --- Props: Movies
+  - Movie           --- Props: Movie
