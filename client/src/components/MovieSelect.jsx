@@ -10,6 +10,7 @@ var MovieSelect = React.createClass({
     var newIndex = element.target.value
     this.setState({selectedIndex: newIndex})
     this.props.setCurrentMovie(this.props.movies[newIndex])
+    // console.log(this.props.movies[newIndex].show_title)
   },
 
   render: function(){

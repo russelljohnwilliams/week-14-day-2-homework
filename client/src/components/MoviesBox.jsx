@@ -8,7 +8,8 @@ var MoviesBox = React.createClass({
     return {movies:[], currentMovie: null}
   },
 
-  setCurrentMovies: function(movie){
+  setCurrentMovie: function(movie){
+    console.log(movie)
     this.setState({currentMovie: movie})
   },
 
@@ -29,8 +30,8 @@ var MoviesBox = React.createClass({
     return(
       <div>
       <h4>film</h4>
-      <MovieSelect movies={this.state.movies} setCurrentMovies={this.setCurrentMovies} />
-      <MovieDetails movies={this.state.CurrentMovie} />
+      <MovieSelect movies={this.state.movies} setCurrentMovie={this.setCurrentMovie} />
+      <MovieDetails movie={this.state.setCurrentMovie} />
       </div>
       )
   }

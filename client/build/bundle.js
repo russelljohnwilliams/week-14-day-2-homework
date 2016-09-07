@@ -19766,7 +19766,8 @@
 	    return { movies: [], currentMovie: null };
 	  },
 	
-	  setCurrentMovies: function setCurrentMovies(movie) {
+	  setCurrentMovie: function setCurrentMovie(movie) {
+	    console.log(movie);
 	    this.setState({ currentMovie: movie });
 	  },
 	
@@ -19792,8 +19793,8 @@
 	        null,
 	        'film'
 	      ),
-	      React.createElement(MovieSelect, { movies: this.state.movies, setCurrentMovies: this.setCurrentMovies }),
-	      React.createElement(MovieDetails, { movies: this.state.CurrentMovie })
+	      React.createElement(MovieSelect, { movies: this.state.movies, setCurrentMovie: this.setCurrentMovie }),
+	      React.createElement(MovieDetails, { movie: this.state.setCurrentMovie })
 	    );
 	  }
 	
@@ -19821,6 +19822,7 @@
 	    var newIndex = element.target.value;
 	    this.setState({ selectedIndex: newIndex });
 	    this.props.setCurrentMovie(this.props.movies[newIndex]);
+	    // console.log(this.props.movies[newIndex].show_title)
 	  },
 	
 	  render: function render() {
@@ -19845,9 +19847,44 @@
 /***/ },
 /* 161 */,
 /* 162 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var MovieDetails = function MovieDetails(props) {
+	  console.log(props);
+	  if (!props.movie) {
+	
+	    return React.createElement(
+	      'p',
+	      null,
+	      'I\'ve got nothing for you'
+	    );
+	  }
+	  return React.createElement(
+	    'div',
+	    null,
+	    React.createElement(
+	      'h3',
+	      null,
+	      props.movie.show_title
+	    ),
+	    React.createElement(
+	      'p',
+	      null,
+	      props.movie.summary
+	    ),
+	    React.createElement(
+	      'p',
+	      null,
+	      props.movie.poster
+	    )
+	  );
+	};
+	
+	module.exports = MovieDetails;
 
 /***/ }
 /******/ ]);
